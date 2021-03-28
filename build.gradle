@@ -7,6 +7,9 @@
  */
 
 plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
 }
@@ -16,7 +19,16 @@ repositories {
     jcenter()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
 dependencies {
+    // AWS related
+    implementation platform('software.amazon.awssdk:bom:2.15.0')
+    implementation 'software.amazon.awssdk:sqs'
+
     // Use JUnit Jupiter API for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
 
